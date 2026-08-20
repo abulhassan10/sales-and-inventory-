@@ -98,9 +98,8 @@ def update_product(
             detail="Product not found"
         )
 
-    product.name = product_data.name
-    product.price = product_data.price
-    product.stock = product_data.stock
+    for key, value in product_data.dict().items():
+        setattr(product, key, value)
 
     db.commit()
     db.refresh(product)
