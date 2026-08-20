@@ -42,7 +42,6 @@ def create_customer(
         customers.append(customer)
     
 
-      db.add(customer)
       db.commit()
       db.refresh(customer)
 
