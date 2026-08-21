@@ -20,11 +20,11 @@ router = APIRouter(
 def create_customer(
     customer_data: list[CustomerCreate],
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
-):
+    current_user: User = Depends(get_current_user)):
+   
       customer = []
       for data in customer_data:
-        customer = db.query(Customer).filter(customer.phone == data.phone).first()
+        customer = db.query(Customer).filter(Customer.phone == data.phone).first()
         if customer:
             raise HTTPException(
                 status_code=400,
